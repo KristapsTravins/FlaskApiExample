@@ -1,5 +1,5 @@
 import pymysql
-conn = pymysql.connect(user='root', passwd='G6#QnkyL]~N5FTzj', db='db')
+conn = pymysql.connect(user='root', passwd='', db='db')
 cur = conn.cursor()
 
 
