@@ -1,5 +1,5 @@
 import pymysql
-conn = pymysql.connect(user='root', passwd='###########', db='db')
+conn = pymysql.connect(user='root', passwd='G6#QnkyL]~N5FTzj', db='db')
 cur = conn.cursor()
 
 
@@ -50,9 +50,11 @@ class DatabaseConn:
     def addCustomer(self, name, lname, company, email, adress, city, country, postal, phone):
         cur.execute("call db.add_customer('" + name + "','" + lname + "','" + company +"','"+adress+"', '"+city+"', '"+country+"', '"+postal+"','"+phone+"','" +email+"','2');")
         conn.commit()
-
     def deleteCustomer(self, name, lname):
         cur.execute("call db.delete_custromers('"+name+"', '"+lname+"')")
+        conn.commit()
+    def patchCustomer(self,id,collumn,toWhat):
+        cur.execute("call db.update_column('"+id+"','"+collumn+"','"+toWhat+"')")
         conn.commit()
     def getAllCustomers(self):
         cur.execute("call db.get_all_customers()")
@@ -75,8 +77,9 @@ class DatabaseConn:
                 "S.rank": col[12]
             }
             Elist.append(invoiceDic)
-
         return Elist
+
+
 
 
 
