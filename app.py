@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/customer/<string:name>/<string:lname>", methods=['GET', 'POST', 'DELETE', 'PATCH'])
+@app.route("/customers/<string:name>/<string:lname>", methods=['GET', 'POST', 'DELETE', 'PATCH'])
 def handle_person(name, lname):
     if request.method == 'POST':  # we can understand what type of request we are handling using a conditiozxnal
         con.addCustomer(name, lname, request.args.get('company'), request.args.get('email'), request.args.get('adress'),
@@ -25,7 +25,7 @@ def handle_person(name, lname):
         return jsonify(con.getCustInfo(name, lname))
 
 
-@app.route("/customers/")
+@app.route("/")
 def getAllCustomers():
     return jsonify(con.getAllCustomers())
 
